@@ -1,0 +1,47 @@
+.l-topContents
+  .heroBlock
+    position: relative
+    width: 100%
+    height: 100vh
+    background: url("./images/hero.jpg") no-repeat
+    background-size: cover
+    background-position: 50% 0
+    &::before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 2
+      width: 100%
+      height: 100%
+      background: rgba($black, .2)
+    .heroHead
+      position: absolute
+      top: 50%
+      left: 50%
+      z-index: 3
+      width: 100%
+      text-align: center
+      color: $white
+      +late3d(-50%, -50%, 0)
+      .head
+        font-size: 6.4rem
+        font-weight: lighter
+        span
+          font-weight: bold
+      .subHead
+        font-size: 3.2rem
+
++mq(phone)
+  .l-topContents
+    .heroBlock
+      background: url("./images/hero_sp.jpg") center no-repeat
+      background-size: cover
+      .heroHead
+        .head
+          font-size: 3.2rem
+          font-weight: lighter
+          span
+            font-weight: bold
+        .subHead
+          font-size: 1.6rem

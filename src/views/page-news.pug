@@ -1,0 +1,40 @@
+extends /_layerLayout
+
+block append contents
+  // Template Name: ニュース一覧
+  .l-layout.l-news
+    .p-contentsHeadBlock
+      .inside
+        .c-headLine.headTitle
+          h1.head ニュース一覧
+          p.headSup 
+          p.subHead 
+        .c-description
+    
+    .p-newsList
+      .inside
+        <?php $newslist = get_posts(array( 'category_name' => 'news', 'posts_per_page' => 30)); ?>
+        <?php foreach( $newslist as $post ): setup_postdata( $post ); ?>
+          .newsItem
+            .c-newsCard
+              //- <?php if (has_post_thumbnail()) : ?>
+              //-   a.imgWrap(href!="<?php the_permalink(); ?>" ontouchstart="")
+              //-     <?php the_post_thumbnail(); ?>
+              //- <?php endif; ?>
+              .newsHead
+                .date <?php the_time('Y.m.d'); ?>
+                <?php the_tags('<div class="tagList"><span>', '</span><span>', '</span></div>'); ?>
+              .newsBody
+                a.head(href!="<?php the_permalink(); ?>")
+                  h3.title
+                    <?php if(mb_strlen($post -> post_title, 'UTF-8')>47){ $title= mb_substr($post -> post_title, 0, 47, 'UTF-8'); echo $title.'...';}else{ echo $post -> post_title;} ?>
+                  //- p.description
+                  //-   <?php echo mb_substr(get_the_excerpt(), 0, 40); ?> ...
+              a.newsMore(href!="<?php the_permalink(); ?>")
+                | Read More
+        <?php endforeach; wp_reset_postdata();?>
+        .c-paging
+          .prev
+            <?php previous_posts_link(); ?>
+          .next
+            <?php next_posts_link(); ?>

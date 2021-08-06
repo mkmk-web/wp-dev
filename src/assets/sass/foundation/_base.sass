@@ -1,0 +1,97 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+ 
+*, html, body
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI, "游ゴシック体", YuGothic, Yu Gothic, "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif
+html
+  font-size: 10px
+  scroll-behavior: smooth
+  -webkit-text-size-adjust: 100%
+  &.noScroll
+    scroll-behavior: auto
+
+body
+  min-width: 1000px
+  background: $ltGray
+  font-size: $remDef
+  color: $subPrimary
+a
+  color: $link
+section
+  padding: $space * 30 0
+
+::-moz-selection
+  background: $primary
+  color: $white
+::-ms-selection
+  background: $primary
+  color: $white
+::-o-selection
+  background: $primary
+  color: $white
+::selection
+  background: $primary
+  color: $white
+
+
+@font-face
+  font-family: "Yu Gothic"
+  src: local("Yu Gothic Medium")
+  font-weight: 100
+
+@font-face
+  font-family: "Yu Gothic"
+  src: local("Yu Gothic Medium")
+  font-weight: 200
+
+@font-face
+  font-family: "Yu Gothic"
+  src: local("Yu Gothic Medium")
+  font-weight: 300
+
+@font-face
+  font-family: "Yu Gothic"
+  src: local("Yu Gothic Medium")
+  font-weight: 400
+
+@font-face
+  font-family: "Yu Gothic"
+  src: local("Yu Gothic Bold")
+  font-weight: bold
+
+
+@font-face
+  font-family: "Noto"
+  src: url('../fonts/NotoSansJP-Bold.woff') format('woff')
+  font-weight: 900
+@font-face
+  font-family: "Noto"
+  src: url('../fonts/NotoSansJP-Regular.woff') format('woff')
+  font-weight: 300
+@font-face
+  font-family: "Noto"
+  src: url('../fonts/NotoSansJP-Thin.woff') format('woff')
+  font-weight: 100
+
+// @font-face
+//   font-family: "Ubuntu"
+//   src: url('./fonts/Ubuntu-Bold.woff') format('woff')
+//   font-weight: 900
+// @font-face
+//   font-family: "Ubuntu"
+//   src: url('./fonts/Ubuntu-Regular.woff') format('woff')
+//   font-weight: 300
+// @font-face
+//   font-family: "Ubuntu"
+//   src: url('./fonts/Ubuntu-Light.woff') format('woff')
+//   font-weight: 100
+
+
+
+
++mq(pad)
+  body
+    min-width: 670px
+
++mq(phone)
+  body
+    min-width: 320px

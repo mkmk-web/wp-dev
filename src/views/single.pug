@@ -1,0 +1,114 @@
+extends /_layerLayout
+
+block append contents
+  .l-layout.l-newsSingle
+    <?php if (have_posts()) : ?>
+      <?php while (have_posts()) : the_post(); ?>
+        .p-articleContent
+          .inside
+            .singleHeader
+              h1.pageTitle
+                <?php the_title(); ?>
+              .info
+                time.date
+                  <?php the_time('Y.m.d'); ?>
+                <?php the_tags('<div class="tagList"><span>', '</span><span>', '</span></div>'); ?>
+            .singleBody
+              <?php the_content(); ?>
+
+            //- .singlePaging
+            //-   <?php $prevpost = get_adjacent_post(false, '', true); if ($prevpost) : ?>
+            //-     .articlePager
+            //-       .head
+            //-         | 前の記事
+            //-       a.link(href!="<?php echo the_permalink($prevpost->ID); ?>")
+            //-         .imgWrap
+            //-           <?php echo get_the_post_thumbnail($prevpost->ID); ?>
+            //-         .title
+            //-           | <?php echo esc_attr($prevpost->post_title); ?>
+            //-   <?php endif; ?>
+              
+            //-   <?php $nextpost = get_adjacent_post(false, '', false); if ($nextpost) : ?>
+            //-     .articlePager
+            //-       .head
+            //-         | 次の記事
+            //-       a.link(href!="<?php echo the_permalink($nextpost->ID); ?>")
+            //-         .imgWrap
+            //-           | <?php echo get_the_post_thumbnail($nextpost->ID); ?>
+            //-         .title
+            //-           | <?php echo esc_attr($nextpost->post_title); ?>
+            //-   <?php endif; ?>
+      <?php endwhile; ?>
+    <?php else : ?>
+      p.noText Sorry... No Article...
+    <?php endif; ?>
+    aside.p-newsList
+      .inside
+        <?php $newslist = get_posts(array( 'category_name' => 'news', 'posts_per_page' => 30)); ?>
+        <?php foreach( $newslist as $post ): setup_postdata( $post ); ?>
+          .newsItem
+            .c-sideNewsCard
+              //- <?php if (has_post_thumbnail()) : ?>
+              //-   a.imgWrap(href!="<?php the_permalink(); ?>" ontouchstart="")
+              //-     <?php the_post_thumbnail(); ?>
+              //- <?php endif; ?>
+              .newsHead
+                .date <?php the_time('Y.m.d'); ?>
+                <?php the_tags('<div class="tagList"><span>', '</span><span>', '</span></div>'); ?>
+              .newsBody
+                a.head(href!="<?php the_permalink(); ?>")
+                  h3.title
+                    <?php if(mb_strlen($post -> post_title, 'UTF-8')>34){ $title= mb_substr($post -> post_title, 0, 34, 'UTF-8'); echo $title.'...';}else{ echo $post -> post_title;} ?>
+                  //- p.description
+                  //-   <?php echo mb_substr(get_the_excerpt(), 0, 40); ?> ...
+        <?php endforeach; wp_reset_postdata();?>
+        //- .c-paging
+        //-   .prev
+        //-     <?php previous_posts_link(); ?>
+        //-   .next
+        //-     <?php next_posts_link(); ?>
+
+    //- aside.p-sideBar
+    //-   .inside
+    //-     <?php if( has_category() ) {
+    //-       | $cats = get_the_category();
+    //-       | $catkwds = array();
+    //-       | foreach($cats as $cat) {
+    //-       |   $catkwds[] = $cat->term_id;
+    //-       | }
+    //-     | } ?>
+    //-     <?php $myposts = get_posts( array(
+    //-       | 'post_type' => 'post',
+    //-       | 'posts_per_page' => '6',
+    //-       | 'post__not_in' => array( $post->ID ),
+    //-       | 'category__in' => $catkwds,
+    //-       | 'orderby' => 'rand'
+    //-     | )); ?>
+    //-     <?php if( $myposts ): ?>
+    //-       .c-head.Head01.headCenter
+    //-         | その他ニュース
+    //-       ul.p-sideNews
+    //-         <?php foreach($myposts as $post): setup_postdata($post); ?>
+    //-           .newsItem
+    //-             .c-sideNewsCard
+    //-               //- <?php if (has_post_thumbnail()) : ?>
+    //-               //-   a.imgWrap(href!="<?php the_permalink(); ?>" ontouchstart="")
+    //-               //-     <?php the_post_thumbnail(); ?>
+    //-               //- <?php endif; ?>
+    //-               .newsHead
+    //-                 .date <?php the_time('Y.m.d'); ?>
+    //-                 <?php the_tags('<div class="tagList"><span>', '</span><span>', '</span></div>'); ?>
+    //-               .newsBody
+    //-                 a.head(href!="<?php the_permalink(); ?>")
+    //-                   h3.title
+    //-                     <?php if(mb_strlen($post -> post_title, 'UTF-8')>47){ $title= mb_substr($post -> post_title, 0, 47, 'UTF-8'); echo $title.'...';}else{ echo $post -> post_title;} ?>
+    //-                   //- p.description
+    //-                   //-   <?php echo mb_substr(get_the_excerpt(), 0, 40); ?> ...
+    //-               .newsMore
+    //-                 | Read More
+    //-           <?php wp_reset_postdata(); ?>
+    //-         <?php endforeach; ?>
+    //-     <?php endif; ?>  
+    
+      
+

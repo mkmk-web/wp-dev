@@ -1,0 +1,49 @@
+.l-footer
+  position: fixed
+  bottom: 0
+  left: 0
+  z-index: 10000
+  width: 100%
+  opacity: 0
+  visibility: hidden
+  +trans(all, .3s, ease)
+  &.js-active
+    opacity: 1
+    visibility: visible
+  .inside
+    display: flex
+    align-items: center
+    padding: $space * 10 $space * 8
+  .footerLeft,
+  .footerRight
+    flex-basis: 50%
+  .footerLogo
+    position: absolute
+    bottom: 0
+    right: 0
+    .back
+      display: block
+      width: 100%
+    .footerSiteMapBtn
+      position: relative
+      z-index: 2
+      
+    .footerCopyLight
+      position: absolute
+      bottom: 16px
+      right: 32px
+      z-index: 2
+      color: $white
+
++mq(phone)
+  .l-footer
+    .inside
+    .footerLeft,
+    .footerRight
+    .footerLogo
+      .back
+      .footerSiteMapBtn
+      .footerCopyLight
+        font-size: 1rem
+        right: 24px
+      

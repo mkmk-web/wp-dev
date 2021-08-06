@@ -1,0 +1,268 @@
+.l-header
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 10000
+  width: 100%
+  .inside
+    display: flex
+  .headerLeft
+    flex-basis: 40%
+  .headerRight
+    flex-basis: 60%
+  
+  .headerLogo
+    position: absolute
+    top: 0
+    left: 0
+    padding: $space * 10 0 0 $space * 8 
+    .img
+      position: relative
+      width: 100px
+      z-index: 2
+  .back
+    display: block
+    width: 100%
+
+  .headerNav
+  
+  .globalMenuList
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: $space * 8 $space * 8 0 0
+    .menuItem
+      position: relative
+      margin-right: $space * 4
+      text-align: center
+      &:last-child
+        margin-right: 0
+      .menuLink
+        display: block
+        position: relative
+        perspective: 300px
+        -webkit-perspective: 300px
+        overflow: visible
+        cursor: pointer
+        &:hover
+          .dropdownMenu
+            display: block
+          .textJP
+            opacity: 1
+            z-index: 2
+            +rotateX(0deg)
+            &::before,
+            &::after
+              width: 38%
+
+          .textEN
+            opacity: 0
+            +rotateX(-90deg)
+
+        .textEN,
+        .textJP
+          display: block
+          position: absolute
+          top: 0
+          left: 0
+          z-index: -1
+          width: 120px
+          height: 50px
+          line-height: 50px
+          font-size: 1.6rem
+          font-weight: bold
+          -webkit-backface-visibility: hidden
+          backface-visibility: hidden
+          color: $white
+          +origin(50%, 50%, -27px)
+          +trans(all, .3s, ease)
+
+        .dummy
+          display: block
+          width: 120px
+          height: 50px
+          line-height: 50px
+          opacity: 0
+          font-size: 2rem
+          font-weight: bold
+
+        .textJP
+          opacity: 0
+          +rotateX(90deg)
+          &.noBorder
+            &::before,
+            &::after,
+              display: none
+          &::before,
+          &::after
+            content: ""
+            position: absolute
+            bottom: 4px
+            width: 0
+            height: 2px
+            background: $white
+            +trans(all, .3s, ease)
+            +transD(.3s)
+          &::before
+            left: 50%
+          &::after
+            right: 50%
+          
+        .textEN
+          opacity: 1
+          +rotateX(0deg)
+
+        .dropdownMenu
+          display: none
+          position: absolute
+          top: 100%
+          left: 0
+          padding-top: $space * 4
+          width: 240px
+          +late3d(0%, -8%, 0)
+          .backpaper
+            position: relative
+            padding: $space * 6
+            background: $primary
+            &::before
+              content: ""
+              position: absolute
+              top: -12px
+              left: 40px
+              z-index: 13
+              border-top: solid 20px transparent
+              border-right: solid 20px transparent
+              border-bottom: solid 20px $primary
+              border-left: solid 20px transparent
+              +late3d(0%, -50%, 0)
+
+          .dropLink
+            display: block
+            position: relative
+            margin-bottom: $space * 6
+            text-align: left
+            color: $white
+            &:hover
+              &::before
+                width: 20%
+            &::before
+              content: ""
+              position: absolute
+              bottom: -8px
+              width: 0
+              left: 0
+              height: 2px
+              border-radius: $circle
+              background: $white
+              -webkit-backface-visibility: hidden
+              backface-visibility: hidden
+              +trans(all, .3s, ease)
+            
+            &:last-child
+              margin-bottom: 0
+
+  &.layerHeader
+    .c-hambergerMenu
+      position: absolute
+      top: 24px
+      right: 32px
+      z-index: 1000
+      .ham
+        +trans(all, .3s, ease)
+      &.js-active
+        .hamberger
+          .ham
+            background: $white
+            top: 50%
+            &:first-child
+              +lateRotate(0, 0, -45deg)
+            &:nth-child(2)
+              opacity: 0
+            &:last-child
+              +lateRotate(0, 0, 45deg)
+
+    .sideNav
+      position: fixed
+      top: 0
+      right: 0
+      z-index: 2
+      padding-top: $space * 18
+      width: 320px
+      height: 100vh
+      background: $primary
+      -webkit-backface-visibility: hidden
+      backface-visibility: hidden
+      +late3d(100%, 0, 0)
+      +trans(all, .3s, ease)
+      &.js-active
+        +late3d(0%, 0, 0)
+      .sideMenuList
+        .menuItem
+        .menuLink
+          display: block
+          padding: $space * 3 $space * 4
+          padding-right: $space * 8
+          cursor: pointer
+          color: $white
+          .arrowText
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 100%
+            &:hover
+              text-decoration: underline
+          .arrow
+            border-top: solid 6px $white
+            border-right: solid 6px transparent
+            border-bottom: solid 6px transparent
+            border-left: solid 6px transparent
+        .dropdownMenu
+          max-height: 0
+          overflow: hidden
+          +trans(all, .3s, ease)
+          &.js-active
+            max-height: 100vh
+          .backpaper
+          .dropLink
+            display: block
+            padding: $space * 3 $space * 4
+            padding-left: $space * 8
+            color: $white
+            &:hover
+              text-decoration: underline
+  
+  &.topLayerHeader
+    display: none
+
+
+
++mq(pad)
+  .l-header
+    display: none
+    .inside
+      display: block
+    .headerLogo
+      padding: $space * 10 0 0 $space * 8 
+    &.topLayerHeader
+      display: block
+    &.layerHeader
+      display: block
+      .sideNav
+        width: 80%
+    
+
++mq(phone)
+  .l-header
+    .inside
+    .headerLeft,
+    .headerRight
+    .headerLogo
+      padding: $space * 4 0 0 $space * 6
+      .img
+        position: relative
+        width: 80px
+        z-index: 2
+    &.layerHeader
+      .c-hambergerMenu
+        top: 12px
+        right: 24px

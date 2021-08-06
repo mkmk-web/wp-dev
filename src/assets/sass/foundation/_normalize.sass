@@ -1,0 +1,80 @@
+*, html, body, h1, h2, h3, h4, h5, h6, p
+  padding: 0
+  margin: 0
+  -webkit-box-sizing: border-box
+  -o-box-sizing: border-box
+  -moz-box-sizing: border-box
+  -ms-box-sizing: border-box
+  box-sizing: border-box
+  &::before,
+  &::after
+    -webkit-box-sizing: border-box
+    -o-box-sizing: border-box
+    -moz-box-sizing: border-box
+    -ms-box-sizing: border-box
+    box-sizing: border-box
+
+li
+  list-style: none
+
+a
+  text-decoration: none
+  -webkit-appearance: none
+  appearance: none
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  &:focus
+    outline: none
+
+select,
+button,
+textarea,
+label,
+input
+  -webkit-appearance: none
+  -moz-appearance: none
+  -ms-appearance: none
+  -o-appearance: none
+  appearance: none
+  border: 0
+  background: none
+  border-radius: 0
+  outline: none
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+  color: $gray
+  &:focus
+    outline: none
+  &::-webkit-input-placeholder
+    color: $mdGray
+  &:-ms-input-placeholder
+    color: $mdGray
+  &::-moz-placeholder
+    color: $mdGray
+    
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+input[type=number]
+  -moz-appearance: textfield
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight: normal
+
+img
+  border-image-width: 0
+
+
+
+input,
+textarea,
+select
+  &:-webkit-autofill
+    -webkit-box-shadow: 0 0 0px 1000px $ltGray inset
+
+

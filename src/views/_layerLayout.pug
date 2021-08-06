@@ -1,0 +1,20 @@
+doctype html
+html(lang="ja")
+  include /_config
+  head
+    include /_meta
+    <?php wp_head(); ?>
+  body
+    <?php get_header('layer'); ?>
+    .wrapper.js-wrapper
+      include /_privacy
+      .u-faceMask.js-faceMask
+        .ball-grid-pulse
+          div
+        img.faceIcon(src!= `${imageURL}/logo.svg`)
+      block contents
+        noscript
+          iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-M555T3N" height="0" width="0" style="display:none;visibility:hidden")
+    <?php get_footer(); ?>
+    script(type="text/javascript" src!= `${rootURL}/javascripts/index.js`)
+

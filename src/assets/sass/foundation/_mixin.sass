@@ -1,0 +1,143 @@
+// BEM - Modifier
+=m($name)
+  @at-root #{&}#{$name}
+    @content
+
+=mq($bp)
+  @if $bp == phone
+    @media screen and (max-width: $mobile)
+      @content
+  @else if $bp == pad
+    @media screen and (max-width: $tablet)
+      @content
+  @else if $bp == pFL-first
+    @media screen and (max-width: 1499px)
+      @content
+  @else if $bp == pFL-second
+    @media screen and (max-width: 1290px)
+      @content
+  @else if $bp == menuBr
+    @media screen and (max-width: 1140px)
+      @content
+  @else if $bp == flow
+    @media screen and (max-width: 1100px)
+      @content
+
+=trans($name, $duration, $timing)
+  -webkit-transition: $name $duration $timing
+  -moz-transition: $name $duration $timing
+  -ms-transition: $name $duration $timing
+  -o-transition: $name $duration $timing
+  transition: $name $duration $timing
+
+=transD($delay)
+  -webkit-transition-delay: $delay
+  -moz-transition-delay: $delay
+  -ms-transition-delay: $delay
+  -o-transition-delay: $delay
+  transition-delay: $delay
+
+=transitionCubic($duration)
+  -webkit-transition: $duration cubic-bezier(0, 0, 0.25, 1)
+  -moz-transition: $duration cubic-bezier(0, 0, 0.25, 1)
+  -ms-transition: $duration cubic-bezier(0, 0, 0.25, 1)
+  -o-transition: $duration cubic-bezier(0, 0, 0.25, 1)
+  transition: $duration cubic-bezier(0, 0, 0.25, 1)
+
+
+=scale($scaleX, $scaleY)
+  -webkit-transform: scale($scaleX, $scaleY)
+  -moz-transform: scale($scaleX, $scaleY)
+  -ms-transform: scale($scaleX, $scaleY)
+  -o-transform: scale($scaleX, $scaleY)
+  transform: scale($scaleX, $scaleY)
+
+=rotateX($rotate)
+  -ms-transform: rotateX($rotate)
+  -o-transform: rotateX($rotate)
+  -moz-transform: rotateX($rotate)
+  -webkit-transform: rotateX($rotate)
+  transform: rotateX($rotate)
+
+=rotate($rotate)
+  -ms-transform: rotate($rotate)
+  -o-transform: rotate($rotate)
+  -moz-transform: rotate($rotate)
+  -webkit-transform: rotate($rotate)
+  transform: rotate($rotate)
+
+=late3d($horizon, $vertical, $Tertiary)
+  -webkit-transform: translate3d($horizon, $vertical, $Tertiary)
+  -moz-transform: translate3d($horizon, $vertical, $Tertiary)
+  -ms-transform: translate3d($horizon, $vertical, $Tertiary)
+  -o-transform: translate3d($horizon, $vertical, $Tertiary)
+  transform: translate3d($horizon, $vertical, $Tertiary)
+
+
+=lateRotate($horizon, $vertical, $rotate)
+  -webkit-transform: translate($horizon, $vertical) rotate($rotate)
+  -moz-transform: translate($horizon, $vertical) rotate($rotate)
+  -ms-transform: translate($horizon, $vertical) rotate($rotate)
+  -o-transform: translate($horizon, $vertical) rotate($rotate)
+  transform: translate($horizon, $vertical) rotate($rotate)
+
+=lateScale($horizon, $vertical, $scale)
+  -webkit-transform: translate($horizon, $vertical) scale($scale)
+  -moz-transform: translate($horizon, $vertical) scale($scale)
+  -ms-transform: translate($horizon, $vertical) scale($scale)
+  -o-transform: translate($horizon, $vertical) scale($scale)
+  transform: translate($horizon, $vertical) scale($scale)
+
+=origin($horizon, $vertical, $value)
+  -webkit-transform-origin: $horizon $vertical $value
+  -moz-transform-origin: $horizon $vertical $value
+  -ms-transform-origin: $horizon $vertical $value
+  -o-transform-origin: $horizon $vertical $value
+  transform-origin: $horizon $vertical $value
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=anime($name, $duration, $timing, $delay, $loop)
+  -webkit-animation: $name $duration $timing $delay $loop
+  -moz-animation: $name $duration $timing $delay $loop
+  -ms-animation: $name $duration $timing $delay $loop
+  -o-animation: $name $duration $timing $delay $loop
+  animation: $name $duration $timing $delay $loop
+
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+// -webkit-animation: aio .2s ease-in 0s forwards
+// animation: aio .1s ease-in 0s forwards
+// +keyframes (aio)
+//   0%
+//     width: 1px
+//   100%
+//     width: 5px
+
+
+
+
+
+
+
+
+
+
+
